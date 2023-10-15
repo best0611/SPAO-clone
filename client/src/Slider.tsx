@@ -10,8 +10,8 @@ SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const StyledSwiper = styled(Swiper)`
   width: 100%;
+  min-width: 1240px;
   height: auto;
-  margin-bottom: 70px;
 `;
 const SliderImage = styled.img`
   width: 100%;
@@ -27,6 +27,8 @@ export default function Slider() {
       navigation
       pagination={{ clickable: true }}
       autoplay={{ delay: 3000 }}
+      loop={true}
+      loopAdditionalSlides={1}
     >
       {sliderImageArr.map((val) => (
         <SwiperSlide>

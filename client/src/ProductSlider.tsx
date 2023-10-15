@@ -11,15 +11,8 @@ interface Props {
   arr: ProductObject[];
   slide: number;
 }
-const StyledSwiper = styled(Swiper)`
-  width: 100%;
-  height: auto;
-  margin-bottom: 70px;
-`;
-const SliderImage = styled.img`
-  width: 100%;
-  opacity: 10;
-`;
+const StyledSwiper = styled(Swiper)``;
+
 export default function ProductSlider({ arr, slide }: Props) {
   const ColorSpan = styled.span`
     display: inline-block;
@@ -30,43 +23,47 @@ export default function ProductSlider({ arr, slide }: Props) {
     background-color: ${(props) => props.color};
     border: 0.5px solid lightgray;
   `;
-  const BeforePrice = styled.span`
-    text-decoration: line-through;
-    color: lightgray;
-  `;
-  const SalePercent = styled.span`
-    color: red;
-  `;
+
   return (
     <>
       <StyledSwiper
-        spaceBetween={50}
+        className="swiper-banner"
+        spaceBetween={60}
         slidesPerView={slide}
         navigation
-        pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
+        loop={true}
+        loopAdditionalSlides={1}
       >
         {arr.map((el) => (
-          <SwiperSlide key={el.id}>
-            <SliderImage src={el.src} />
-            <div>{el.name}</div>
-            <div>
-              <span>
-                {(
-                  Math.round((el.price * (100 - el.sale)) / 10000) * 100
-                ).toLocaleString()}
-              </span>
-              {el.sale > 0 && (
-                <>
-                  <BeforePrice>{el.price.toLocaleString()}</BeforePrice>
-                  <SalePercent>{el.sale}%</SalePercent>
-                </>
-              )}
+          <SwiperSlide className="thumbnail" key={el.id}>
+            <div className="prdImg">
+              <a href="">
+                <img className="prdImg--img" src={el.src} />
+              </a>
             </div>
-            <div>
-              {el.colors.map((color) => (
-                <ColorSpan color={color}></ColorSpan>
-              ))}
+            <div className="description">
+              <div className="productname--text">{el.name}</div>
+              <div className="pricebox">
+                <span className="pricebox--current">
+                  {(
+                    Math.round((el.price * (100 - el.sale)) / 10000) * 100
+                  ).toLocaleString()}
+                </span>
+                {el.sale > 0 && (
+                  <>
+                    <span className="pricebox--before">
+                      {el.price.toLocaleString()}
+                    </span>
+                    <span className="pricebox--percent">{el.sale}%</span>
+                  </>
+                )}
+              </div>
+              <div className="color">
+                {el.colors.map((color) => (
+                  <ColorSpan color={color}></ColorSpan>
+                ))}
+              </div>
             </div>
           </SwiperSlide>
         ))}

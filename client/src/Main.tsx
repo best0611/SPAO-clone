@@ -6,8 +6,8 @@ import Container from "./Container";
 // import {Outlet} from 'react-router-dom'
 export default function Main() {
   return (
-    <div>
-      <Header />
+    <>
+      {/* <Header /> */}
       <Slider />
       <Container title="위클리 베스트" />
       <Container title="신상품" />
@@ -17,6 +17,6 @@ export default function Main() {
       <Container title="스냅" />
       {/* fixedban */}
       {/* footer */}
-    </div>
+    </>
   );
 }

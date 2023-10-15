@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import "./css/product.scss";
 import ProductTable from "./ProductTable";
 import {
   productsBest,
@@ -16,33 +16,38 @@ interface Props {
 }
 export default function Container({ title }: Props) {
   const [selectedComp, setSelectedComp] = useState("woman");
+
   const handleShowTable = (keyword: string) => {
     setSelectedComp(keyword);
   };
-  const ContainerBox = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    div {
-      width: 250px;
-      img {
-        width: 80%;
-      }
-    }
-  `;
 
   return (
-    <div
-      className="containerbox"
-      style={{ height: "fit-content", width: "1240px" }}
-    >
-      <div>{title}</div>
+    <div className="containerbox">
+      <div className="containerbox--title">{title}</div>
       {title === "위클리 베스트" && (
         <>
-          <button onClick={() => handleShowTable("woman")}>우먼</button>
-          <button onClick={() => handleShowTable("man")}>맨</button>
-          <button onClick={() => handleShowTable("kids")}>키즈</button>
-          <button onClick={() => handleShowTable("pajama")}>파자마</button>
-          <ContainerBox>
+          <div className="containerbox--btn">
+            <ul>
+              {["woman", "man", "kids", "pajama"].map((el) => (
+                <li
+                  key={el}
+                  className={`bestCategory ${
+                    selectedComp === el ? "bestCategory--active" : ""
+                  }`}
+                  onClick={() => handleShowTable(el)}
+                >
+                  {el === "woman" && "우먼"}
+                  {el === "man" && "맨"}
+                  {el === "kids" && "키즈"}
+                  {el === "pajama" && "파자마"}
+                  {selectedComp === el && (
+                    <span className="activeCircle"></span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="containerbox--best">
             {selectedComp === "woman" && (
               <ProductTable arr={productsBest} gender={0} />
             )}
@@ -55,12 +60,12 @@ export default function Container({ title }: Props) {
             {selectedComp === "pajama" && (
               <ProductTable arr={productsBest} gender={4} />
             )}
-          </ContainerBox>
+          </div>
         </>
       )}
-      {title === "신상품" && <ProductSlider arr={productNew} slide={3} />}
+      {title === "신상품" && <ProductSlider arr={productNew} slide={4} />}
       {title === "스타일 픽" && (
-        <ProductSlider arr={productStylePick} slide={4} />
+        <ProductSlider arr={productStylePick} slide={3} />
       )}
       {title === "트랜드 픽" && <MegazineTable arr={trendpickArr} />}
       {title === "룩북" && (

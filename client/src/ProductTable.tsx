@@ -9,27 +9,6 @@ export default function ProductTable({ arr, gender }: Props) {
   const selectedArr = arr
     .filter((el) => el.gender.includes(gender))
     .slice(0, 8);
-  const PrdUl = styled.ul`
-    /* display: table; */
-    width: 100%;
-    min-width: 100%;
-    margin: 0;
-    position: relative;
-    height: fit-content;
-    li {
-      display: inline-block;
-      width: 24%;
-      margin: 0 0.5% 60px;
-    }
-    .num {
-      position: relative;
-      z-index: 10;
-    }
-    .price_box {
-      position: relative;
-      height: fit-content;
-    }
-  `;
   const ColorSpan = styled.span`
     display: inline-block;
     margin-right: 3px;
@@ -39,16 +18,10 @@ export default function ProductTable({ arr, gender }: Props) {
     background-color: ${(props) => props.color};
     border: 0.5px solid lightgray;
   `;
-  const BeforePrice = styled.span`
-    text-decoration: line-through;
-    color: lightgray;
-  `;
-  const SalePercent = styled.span`
-    color: red;
-  `;
+
   return (
     <>
-      <PrdUl>
+      <ul className="productTable">
         {selectedArr.map((el, idx) => (
           <li key={el.id}>
             <div className="box animated">
@@ -56,64 +29,65 @@ export default function ProductTable({ arr, gender }: Props) {
                 <span className="num">{idx + 1}</span>
                 <div className="prdImg">
                   <a href="">
-                    <img src={el.src} alt={el.name} />
+                    <img className="prdImg--img" src={el.src} alt={el.name} />
                   </a>
                 </div>
               </div>
               <div className="description">
-                <div className="name">
+                <div className="productname">
                   <a href="">
-                    <span>{el.name}</span>
+                    <span className="productname--text">{el.name}</span>
                   </a>
                   <img
                     src="https://spao.com/web/upload/icon_202009041749300600.png"
                     alt="관심상품 등록 전"
                     style={{ width: "20px" }}
                   />
-                  <img
+                  {/* <img
                     src="https://spao.com/web/upload/icon_202009041749389300.png"
                     alt="관심상품 등록 후"
                     style={{ width: "20px" }}
-                  />
+                  /> */}
                 </div>
-                <div className="price_box">
-                  <span>
+                <div className="pricebox">
+                  <span className="pricebox--current">
                     {(
                       Math.round((el.price * (100 - el.sale)) / 10000) * 100
                     ).toLocaleString()}
                   </span>
                   {el.sale > 0 && (
                     <>
-                      <BeforePrice>{el.price.toLocaleString()}</BeforePrice>
-                      <SalePercent>{el.sale}%</SalePercent>
+                      <span className="pricebox--before">
+                        {el.price.toLocaleString()}
+                      </span>
+                      <span className="pricebox--percent">{el.sale}%</span>
                     </>
                   )}
                 </div>
+                <div className="color">
+                  {el.colors.map((color) => (
+                    <ColorSpan color={color} />
+                  ))}
+                </div>
+                <div className="promotion">
+                  {el.tags.map((tag) => (
+                    <span>
+                      <img
+                        src={tag}
+                        style={{
+                          height: "15px",
+                          width: "auto",
+                          marginRight: "3px",
+                        }}
+                      />
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="color">
-                {el.colors.map((color) => (
-                  <ColorSpan color={color} />
-                ))}
-              </div>
-              <div className="promotion">
-                {el.tags.map((tag) => (
-                  <span>
-                    <img
-                      src={tag}
-                      style={{
-                        height: "15px",
-                        width: "auto",
-                        marginRight: "3px",
-                      }}
-                    />
-                  </span>
-                ))}
-              </div>
-              <div className="crema-review"></div>
             </div>
           </li>
         ))}
-      </PrdUl>
+      </ul>
     </>
   );
 }

@@ -1,0 +1,142 @@
+.containerbox {
+  text-align: center;
+  height: fit-content;
+  width: 100%;
+  min-width: 1240px;
+  &--title {
+    font-size: 45px;
+    font-weight: 900;
+    text-align: center;
+    margin: 70px 0px 50px;
+  }
+  &--best {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &--btn {
+    margin-bottom: 40px;
+    & ul {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding: 0px;
+    }
+  }
+  .bestCategory {
+    cursor: pointer;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 10px;
+    &--active {
+      border-bottom: 3px solid black;
+    }
+  }
+  .activeCircle {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background-color: #c41e20;
+    border-radius: 50%;
+    position: relative;
+    bottom: 10px;
+    left: 3px;
+  }
+}
+.productTable {
+  width: 90%;
+  min-width: 1116px;
+  margin: 0 5%;
+  position: relative;
+  height: fit-content;
+  li {
+    position: relative;
+    display: inline-block;
+    width: 24%;
+    margin: 0 0.5% 60px;
+  }
+  .num {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 50px;
+    text-align: center;
+    background-color: #e86434;
+  }
+}
+.thumbnail {
+  width: 100%;
+  .prdImg {
+    &--img {
+      width: 100%;
+    }
+  }
+}
+.description {
+  text-align: left;
+  .productname {
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    &--text {
+      display: inline-block;
+      width: 90%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 17px;
+    }
+  }
+  .pricebox {
+    position: relative;
+    padding: 5px 0px;
+    span {
+      margin-right: 7px;
+    }
+    &--current {
+      font-size: 22px;
+      font-weight: 500;
+    }
+    &--before {
+      text-decoration: line-through;
+      color: lightgray;
+    }
+    &--percent {
+      color: red;
+    }
+  }
+}
+
+.swiper {
+  &-banner {
+    width: 90%;
+    height: auto;
+    margin-bottom: 70px;
+    overflow: hidden;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  &-button {
+    position: absolute;
+    &-prev {
+      opacity: 0.6;
+      color: gray;
+      left: 1.1%;
+      top: 46%;
+    }
+    &-next {
+      opacity: 0.6;
+      color: gray;
+      right: 1.1%;
+      top: 46%;
+    }
+  }
+}

@@ -40,7 +40,22 @@ export default function MegazineSlider({ arr, type }: Props) {
           </StyledSwiper>
         </div>
       )}
-      {type === "snap" && <>슬라이더 5개씩, 자동O </>}
+      {type === "snap" && (
+        <div>
+          <StyledSwiper
+            spaceBetween={50}
+            slidesPerView={5}
+            navigation
+            autoplay={{ delay: 3000 }}
+          >
+            {arr.map((el) => (
+              <StyledSlide key={el.id}>
+                <SliderImage src={el.src} />
+              </StyledSlide>
+            ))}
+          </StyledSwiper>
+        </div>
+      )}
     </>
   );
 }
