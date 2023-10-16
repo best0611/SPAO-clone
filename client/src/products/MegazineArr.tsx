@@ -133,7 +133,7 @@ export const lookbookArr: megazineObject[] = [
   {
     id: 6,
     src: "https://www.spao.com/web/product/big/202301/71366fa0edefd0c0a8c8ce8f6b199212.jpg",
-    title: "WARM BREEZE SWEATER",
+    title: "ROYAL BLUE SPORTS CLUB",
     subtitle: "코트와 일상에서 선명히 빛나는 테니스 플레이어 룩",
     modal: {
       imgs: [

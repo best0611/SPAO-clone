@@ -1,4 +1,3 @@
-import "./css/product.scss";
 import ProductTable from "./ProductTable";
 import {
   productsBest,
@@ -63,9 +62,11 @@ export default function Container({ title }: Props) {
           </div>
         </>
       )}
-      {title === "신상품" && <ProductSlider arr={productNew} slide={4} />}
+      {title === "신상품" && (
+        <ProductSlider arr={productNew} slide={4} type={"new"} />
+      )}
       {title === "스타일 픽" && (
-        <ProductSlider arr={productStylePick} slide={3} />
+        <ProductSlider arr={productStylePick} slide={3} type={"style"} />
       )}
       {title === "트랜드 픽" && <MegazineTable arr={trendpickArr} />}
       {title === "룩북" && (

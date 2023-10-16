@@ -1,0 +1,57 @@
+.topHeader {
+  clear: both;
+  z-index: 100;
+  width: 100%;
+  min-width: 1250px;
+  height: 90px;
+  justify-content: center;
+  margin-top: 50px;
+  &--unscroll {
+    position: absolute;
+  }
+  &--scroll {
+    position: fixed;
+    background-color: white;
+    top: -50px;
+  }
+  &_logo {
+    float: left;
+    height: 90px;
+    line-height: 90px;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90px;
+      margin-left: 35px;
+    }
+  }
+  &_menu {
+    float: left;
+    height: 90px;
+    &__lists {
+      height: 90px;
+      line-height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0px;
+      li {
+        list-style: none;
+        margin: 0;
+        padding: 0px 13px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        font-weight: 600;
+      }
+    }
+  }
+}
+.width1440 {
+  max-width: 1720px;
+  min-width: 1255px !important;
+  margin: 0 auto;
+  padding: 0 2%;
+}

@@ -1,57 +1,67 @@
-import styled from "styled-components";
 import logobk from "./img/top_logo_pc.png";
+import logowh from "./img/top_logo_pc_wh.png";
+import { useState, useEffect } from "react";
+
 export default function Header() {
-  const TopHeader = styled.div`
-    display: flex;
-    flex-wrap: nowrap;
-  `;
-  const TopMenu = styled.ul`
-    display: flex;
-    li {
-      list-style: none;
-    }
-  `;
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", updateScroll);
+  }, []);
   return (
     <>
-      <TopHeader>
-        <div className="top_logo">
-          <a href="/">
-            <img src={logobk} alt="logo-bk" />
-          </a>
+      <div
+        className={
+          scrollPosition > 50
+            ? "topHeader topHeader--scroll"
+            : "topHeader topHeader--unscroll"
+        }
+      >
+        <div className="width1440">
+          <div className="topHeader_logo">
+            <a href="/">
+              {scrollPosition <= 50 && <img src={logowh} alt="logo-bk" />}
+              {scrollPosition > 50 && <img src={logobk} alt="logo-wh" />}
+            </a>
+          </div>
+          <div className="topHeader_menu">
+            <ul className="topHeader_menu__lists">
+              <li>
+                <a href="/" style={{ color: "#C41E20" }}>
+                  할인 상품
+                </a>
+              </li>
+              <li>
+                <a href="/">베스트</a>
+              </li>
+              <li>
+                <a href="/">우먼</a>
+              </li>
+              <li>
+                <a href="/">맨</a>
+              </li>
+              <li>
+                <a href="/">컬래버레이션</a>
+              </li>
+              <li>
+                <a href="/">키즈</a>
+              </li>
+              <li>
+                <a href="/">커뮤니티</a>
+              </li>
+              <li>
+                <a href="/">런칭 캘린더</a>
+              </li>
+              <li>
+                <a href="/">매거진</a>
+              </li>
+            </ul>
+          </div>
+          <div className="top_member"></div>
         </div>
-        <div className="top_menu">
-          <TopMenu>
-            <li>
-              <a href="/">할인 상품</a>
-            </li>
-            <li>
-              <a href="/">베스트</a>
-            </li>
-            <li>
-              <a href="/">우먼</a>
-            </li>
-            <li>
-              <a href="/">맨</a>
-            </li>
-            <li>
-              <a href="/">컬래버레이션</a>
-            </li>
-            <li>
-              <a href="/">키즈</a>
-            </li>
-            <li>
-              <a href="/">커뮤니티</a>
-            </li>
-            <li>
-              <a href="/">런칭 캘린더</a>
-            </li>
-            <li>
-              <a href="/">매거진</a>
-            </li>
-          </TopMenu>
-        </div>
-        <div className="top_member"></div>
-      </TopHeader>
+      </div>
     </>
   );
 }

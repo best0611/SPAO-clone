@@ -10,10 +10,10 @@ SwiperCore.use([Navigation, Pagination, Autoplay]);
 interface Props {
   arr: ProductObject[];
   slide: number;
+  type: string;
 }
-const StyledSwiper = styled(Swiper)``;
 
-export default function ProductSlider({ arr, slide }: Props) {
+export default function ProductSlider({ arr, slide, type }: Props) {
   const ColorSpan = styled.span`
     display: inline-block;
     margin-right: 3px;
@@ -26,7 +26,7 @@ export default function ProductSlider({ arr, slide }: Props) {
 
   return (
     <>
-      <StyledSwiper
+      <Swiper
         className="swiper-banner"
         spaceBetween={60}
         slidesPerView={slide}
@@ -43,7 +43,21 @@ export default function ProductSlider({ arr, slide }: Props) {
               </a>
             </div>
             <div className="description">
-              <div className="productname--text">{el.name}</div>
+              <div className="productname">
+                <div className="productname--text">{el.name}</div>
+                {type === "new" && (
+                  <img
+                    src="https://spao.com/web/upload/icon_202009041749300600.png"
+                    alt="관심상품 등록 전"
+                    style={{ width: "20px" }}
+                  />
+                )}
+                {/* <img
+                    src="https://spao.com/web/upload/icon_202009041749389300.png"
+                    alt="관심상품 등록 후"
+                    style={{ width: "20px" }}
+                  /> */}
+              </div>
               <div className="pricebox">
                 <span className="pricebox--current">
                   {(
@@ -64,10 +78,26 @@ export default function ProductSlider({ arr, slide }: Props) {
                   <ColorSpan color={color}></ColorSpan>
                 ))}
               </div>
+              {type === "style" && (
+                <div className="promotion">
+                  {el.tags.map((tag) => (
+                    <span>
+                      <img
+                        src={tag}
+                        style={{
+                          height: "15px",
+                          width: "auto",
+                          marginRight: "3px",
+                        }}
+                      />
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </SwiperSlide>
         ))}
-      </StyledSwiper>
+      </Swiper>
     </>
   );
 }
