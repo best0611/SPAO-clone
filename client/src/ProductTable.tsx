@@ -1,11 +1,20 @@
 import styled from "styled-components";
 import { ProductObject } from "./products/ProductArrType";
+import { useState, useEffect } from "react";
 
 interface Props {
   arr: ProductObject[];
   gender: number;
 }
 export default function ProductTable({ arr, gender }: Props) {
+  const [heart, setHeart] = useState<number[]>(() => {
+    const storedData = window.localStorage.getItem("heart");
+    return storedData ? JSON.parse(storedData) : [];
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("heart", JSON.stringify(heart));
+  }, [heart]);
   const selectedArr = arr
     .filter((el) => el.gender.includes(gender))
     .slice(0, 8);
@@ -18,7 +27,11 @@ export default function ProductTable({ arr, gender }: Props) {
     background-color: ${(props) => props.color};
     border: 0.5px solid lightgray;
   `;
-
+  const toggleHeart = (id: number) => {
+    heart.includes(id)
+      ? setHeart(heart.filter((el) => el !== id))
+      : setHeart([...heart, id]);
+  };
   return (
     <>
       <ul className="productTable">
@@ -39,15 +52,16 @@ export default function ProductTable({ arr, gender }: Props) {
                     <span className="productname--text">{el.name}</span>
                   </a>
                   <img
-                    src="https://spao.com/web/upload/icon_202009041749300600.png"
-                    alt="관심상품 등록 전"
+                    src={
+                      heart.includes(el.id)
+                        ? "https://spao.com/web/upload/icon_202009041749389300.png"
+                        : "https://spao.com/web/upload/icon_202009041749300600.png"
+                    }
+                    alt="관심상품"
                     style={{ width: "20px" }}
+                    onClick={() => toggleHeart(el.id)}
+                    className="heartbutton"
                   />
-                  {/* <img
-                    src="https://spao.com/web/upload/icon_202009041749389300.png"
-                    alt="관심상품 등록 후"
-                    style={{ width: "20px" }}
-                  /> */}
                 </div>
                 <div className="pricebox">
                   <span className="pricebox--current">

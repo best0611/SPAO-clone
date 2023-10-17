@@ -8,11 +8,23 @@
   margin-top: 50px;
   &--unscroll {
     position: absolute;
+    .topHeader_menu__lists a {
+      color: white;
+    }
+    &:hover {
+      background-color: white;
+      a {
+        color: black;
+      }
+    }
   }
   &--scroll {
     position: fixed;
     background-color: white;
     top: -50px;
+    .topHeader_menu__lists a {
+      color: black;
+    }
   }
   &_logo {
     float: left;

@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/scss/pagination";
 import "swiper/scss/navigation";
 import { ProductObject } from "./products/ProductArrType";
+import { useState, useEffect } from "react";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 interface Props {
@@ -14,6 +15,14 @@ interface Props {
 }
 
 export default function ProductSlider({ arr, slide, type }: Props) {
+  const [heart, setHeart] = useState<number[]>(() => {
+    const storedData = window.localStorage.getItem("heart");
+    return storedData ? JSON.parse(storedData) : [];
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("heart", JSON.stringify(heart));
+  }, [heart]);
   const ColorSpan = styled.span`
     display: inline-block;
     margin-right: 3px;
@@ -23,6 +32,11 @@ export default function ProductSlider({ arr, slide, type }: Props) {
     background-color: ${(props) => props.color};
     border: 0.5px solid lightgray;
   `;
+  const toggleHeart = (id: number) => {
+    heart.includes(id)
+      ? setHeart(heart.filter((el) => el !== id))
+      : setHeart([...heart, id]);
+  };
 
   return (
     <>
@@ -44,19 +58,22 @@ export default function ProductSlider({ arr, slide, type }: Props) {
             </div>
             <div className="description">
               <div className="productname">
-                <div className="productname--text">{el.name}</div>
+                <a href="">
+                  <div className="productname--text">{el.name}</div>
+                </a>
                 {type === "new" && (
                   <img
-                    src="https://spao.com/web/upload/icon_202009041749300600.png"
+                    src={
+                      heart.includes(el.id)
+                        ? "https://spao.com/web/upload/icon_202009041749389300.png"
+                        : "https://spao.com/web/upload/icon_202009041749300600.png"
+                    }
                     alt="관심상품 등록 전"
                     style={{ width: "20px" }}
+                    onClick={() => toggleHeart(el.id)}
+                    className="heartbutton"
                   />
                 )}
-                {/* <img
-                    src="https://spao.com/web/upload/icon_202009041749389300.png"
-                    alt="관심상품 등록 후"
-                    style={{ width: "20px" }}
-                  /> */}
               </div>
               <div className="pricebox">
                 <span className="pricebox--current">

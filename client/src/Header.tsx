@@ -10,6 +10,9 @@ export default function Header() {
   useEffect(() => {
     window.addEventListener("scroll", updateScroll);
   }, []);
+
+  const [hover, setHover] = useState<boolean>(false);
+
   return (
     <>
       <div
@@ -18,12 +21,17 @@ export default function Header() {
             ? "topHeader topHeader--scroll"
             : "topHeader topHeader--unscroll"
         }
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
         <div className="width1440">
           <div className="topHeader_logo">
             <a href="/">
-              {scrollPosition <= 50 && <img src={logowh} alt="logo-bk" />}
-              {scrollPosition > 50 && <img src={logobk} alt="logo-wh" />}
+              {scrollPosition > 50 || hover ? (
+                <img src={logobk} alt="logo-wh" />
+              ) : (
+                <img src={logowh} alt="logo-bk" />
+              )}
             </a>
           </div>
           <div className="topHeader_menu">

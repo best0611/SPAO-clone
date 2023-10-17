@@ -5,6 +5,7 @@ import styled from "styled-components";
 import "./css/product.scss";
 import "./css/megazine.scss";
 import "./css/header.scss";
+import Footer from "./Footer";
 
 export default function Main() {
   const BannerDiv = styled.div`
@@ -32,8 +33,7 @@ export default function Main() {
       <Container title="트랜드 픽" />
       <Container title="룩북" />
       <Container title="스냅" />
-      {/* fixedban */}
-      {/* footer */}
+      <Footer />
     </>
   );
 }
