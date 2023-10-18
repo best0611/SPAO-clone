@@ -39,7 +39,7 @@ export const trendpickArr: megazineObject[] = [
 export const lookbookArr: megazineObject[] = [
   {
     id: 1,
-    src: "https://www.spao.com/web/product/big/202302/82733eae8c6b05765141b87cf069e448.jpg",
+    src: "https://spao.com/web/product/big/202302/5e92290a68eb49c46f01cf8940ecb441.jpg",
     title: "MOOD OF MINIMAL",
     subtitle: "차분함과 간결함으로 채운 미니멀룩",
     modal: {

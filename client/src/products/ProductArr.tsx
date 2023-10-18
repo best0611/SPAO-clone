@@ -667,7 +667,7 @@ export const productLookBook: ProductObject[] = [
   },
   {
     id: 52,
-    src: "https://spao.com/web/product/medium/202302/6d9eaf8f649ace2557e3155f3f12e373.jpg",
+    src: "https://spao.com/web/product/medium/202306/a92dcaa97a517d373cbcfc3f23bf44c2.jpg",
     name: "[데일리지] 고밀도 코튼 오버핏 셔츠_SPYWD23W03",
     price: 39900,
     colors: [Colors.black, Colors.cream],

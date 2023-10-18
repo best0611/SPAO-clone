@@ -14,6 +14,7 @@ const StyledSwiper = styled(Swiper)`
   height: auto;
 `;
 const SliderImage = styled.img`
+cursor: pointer;
   width: 100%;
   opacity: 10;
 `;
