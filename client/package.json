@@ -29,7 +29,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://best0611.github.io/SPAO-clone/",
+  "homepage": "https://best0611.github.io/SPAO-clone/client",
   "eslintConfig": {
     "extends": [
       "react-app",
