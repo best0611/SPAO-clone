@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/SPAO-clone/static/css/main.adcb7f59.css",
-    "main.js": "/SPAO-clone/static/js/main.927de797.js",
-    "index.html": "/SPAO-clone/index.html",
-    "main.adcb7f59.css.map": "/SPAO-clone/static/css/main.adcb7f59.css.map",
-    "main.927de797.js.map": "/SPAO-clone/static/js/main.927de797.js.map"
+    "main.css": "/SPAO-clone/client/static/css/main.adcb7f59.css",
+    "main.js": "/SPAO-clone/client/static/js/main.f96be9d5.js",
+    "index.html": "/SPAO-clone/client/index.html",
+    "main.adcb7f59.css.map": "/SPAO-clone/client/static/css/main.adcb7f59.css.map",
+    "main.f96be9d5.js.map": "/SPAO-clone/client/static/js/main.f96be9d5.js.map"
   },
   "entrypoints": [
     "static/css/main.adcb7f59.css",
-    "static/js/main.927de797.js"
+    "static/js/main.f96be9d5.js"
   ]
 }
